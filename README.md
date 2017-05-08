@@ -10,8 +10,8 @@ This site have:
 6) Site design is done with bootstrap.
 If you want to go AdminPanel
 
-You need to go:
-/Admin/Global
+You need to go: http://comicsstore.somee.com/Admin/Login?ReturnUrl=%2fAdmin%2fglobal
+
 And input
 
 Login:Admin
