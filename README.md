@@ -8,7 +8,9 @@ This site have:
 4) The user has the opportunity to purchase products
 5) Site has Admin Panel with authorisation for administrator.
 6) Site design is done with bootstrap.
+
 Admin Panel
+
 http://comicsstore.somee.com/Admin/Login?ReturnUrl=%2fAdmin%2fglobal
 
 And input
