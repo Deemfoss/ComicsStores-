@@ -13,8 +13,6 @@ Admin Panel
 
 http://comicsstore.somee.com/Admin/Login?ReturnUrl=%2fAdmin%2fglobal
 
-And input
-
 Login:Admin
 
 Password ytrewq21
