@@ -18,4 +18,7 @@ Login:Admin
 
 Password ytrewq21
 
+If you want to see how to look this site
+http://comicsstore.somee.com/
+
 I Hope that this example help someone to create good web sites
