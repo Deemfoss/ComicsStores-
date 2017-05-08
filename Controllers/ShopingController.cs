@@ -82,7 +82,11 @@ namespace ComicsStores.Controllers
             else
             {
                 del[index].quantity--;
-                Session["Cart"] = del;
+            if (del[index].quantity<=0)
+               {
+              del.RemoveAt(index);
+                  Session["Cart"] = del;
+                }
 
             }
             
