@@ -101,8 +101,12 @@ namespace ComicsStores.Controllers
         [HttpPost]
         public ActionResult CreateProduct(Product product)
         {
-            db.Entry(product).State = EntityState.Added;
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                db.Entry(product).State = EntityState.Added;
+                db.SaveChanges();
+            }
+           
 
             return RedirectToAction("Products", "Admin");
 

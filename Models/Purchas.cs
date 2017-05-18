@@ -29,7 +29,7 @@ namespace ComicsStores.Models
         public string Adress { get; set; }
         
         [Required(ErrorMessage = "Введите номер телефона")]
-       // [DisplayFormat(DataFormatString = "{0:###-###-####}")]
+      [System.ComponentModel.DataAnnotations.Phone]
          public string PhoneNumber { get; set; }
     //  public  Product Product{ get; set; }
        // public ICollection<ShopingCart> ShopingCart { get; set; }

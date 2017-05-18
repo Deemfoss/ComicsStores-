@@ -12,12 +12,13 @@
             <div class="col-lg-3">
                 <div align="center" > <label style="font-size:15px">Логин:</label></div> <br />
                 <div align="center" style="padding-top:15px"> <label style="font-size:15px">Пароль:</label></div>
+               @Html.ValidationMessageFor(m=>m.Login)
                 <br />
             </div>
             <div class="col-lg-6">
                 <div><input class="form-control" type="text" name="Login" /></div><br />
                 <div>  <input class="form-control"  type="password" name="Password" /> </div>
-           
+                @Html.ValidationMessageFor(m => m.Password)
         </div><br />
             @*@Html.EditorForModel(Model.Password)<br />*@
             @*//<input  type="file"/>*@
@@ -31,3 +32,7 @@
     </div>
 }
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
