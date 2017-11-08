@@ -15,50 +15,58 @@ namespace ComicsStores.Controllers
     public class HomeController : Controller
     {
         StoreContext db = new StoreContext();
-        //List<Product> prod = new List<Product>();
-        public ActionResult Index(int? page) {
+        public ActionResult Index(int? page,string sortOrder,string search) {
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+
+            
+            var c = from p in db.Products select p;
+
+            if (! String.IsNullOrEmpty( search))
+            {
+                c = c.Where( s=> s.Name.Contains(search));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    c  = db.Products.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                    c = db.Products.OrderBy(s => s.Date);
+                    break;
+                case "date_desc":
+                    c = db.Products.OrderByDescending(s => s.Date);
+                    break;
+                case "price_desc":
+                    c = db.Products.OrderByDescending(s => s.Price);
+                    break;
+                case "Price":
+                    c = db.Products.OrderBy(s => s.Price);
+                    break;
+
+                default:
+                    c = db.Products.OrderBy(s => s.Name);
+                    break;
+
+
+                   
+            }
+
+            ViewBag.result = c.ToList();
 
             int PageSize = 9;
             int PageNumber = (page ?? 1);
-            // db.Products.OrderBy(i => i.Id).Skip(PageNumber * PageSize).Take(PageSize
-            //db.Products.OrderBy(i => i.Id).ToPagedList(PageNumber, PageSize)
+           return View(c.ToPagedList(PageNumber, PageSize));
 
-           // ViewBag.Products = db.Products;
-            return View(db.Products.OrderBy(m=>m.Id).ToPagedList(PageNumber, PageSize));
         }
-        [HttpPost]
-        public ActionResult BookSearch(string Search)
-        {
-            var allbooks = db.Products.Where(a => a.Name.Contains(Search)).ToList();
-          
-            return View(allbooks);
-        }
-
-
-
-        public ActionResult SortbyPrice()
-        {
-
-
-
-          var res= db.Products.OrderBy(m=>m.Price).ToList();
-         
-
-            return View(res) ;
-        }
-        public ActionResult SortbydesPrice()
-        {
-
-
-
-            var res = db.Products.OrderBy(m => m.Price).ToList();
-            res.Reverse();
-            return View(res);
-            
-        }
-
-
-
+        
+      
+        
+  
         public ActionResult Description(int id )
         {
             var Description = db.Products.Find(id);

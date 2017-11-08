@@ -7,7 +7,8 @@ namespace ComicsStores.Models
 {
     
     public class Product
-    {
+    {   
+
         [Required(ErrorMessage = "Заполните все поля")]
         public int Id { get; set; }
         [Required(ErrorMessage = "Заполните все поля")]

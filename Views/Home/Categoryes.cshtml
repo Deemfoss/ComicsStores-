@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<ComicsStores.Models.Category>
 
-<div class="CatalogStyle">
-    @*<div class="table"> <h2>Каталог</h2></div>*@
-    @foreach (var item in Model)
-    {
-        <ul class="nav nav-tabs">
-            <li> <p><h3>@Html.ActionLink(item.Name, "CtegoryDet", new { id = item.Id }, new {@style ="color:black;"})</h3></p></li>
-            </ul>
 
+    <div class="row">
+        @foreach (var item in Model)
+        {
 
-            }
+            <div class="col-lg-12 col-md-2 col-xs-6">
+                <p style="font-size:25px">@Html.ActionLink(item.Name, "CtegoryDet", new { id = item.Id }, new { @style = "color:black;" })</p>
+            </div>
 
-</div>
+        }
+    </div>
+
 @{
     Layout = "~/Views/Shared/_LayoutCat.cshtml";
 }
